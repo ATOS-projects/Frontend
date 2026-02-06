@@ -42,12 +42,17 @@ export function useAuth() {
       // Simple admin check: You can configure this in Clerk Dashboard > Users > Metadata
       // or just hardcode your admin email here.
       role: (clerkUser.publicMetadata?.role as "admin" | "user") ||
-        (clerkUser.primaryEmailAddress?.emailAddress === "admin@restrohub.com" ? "admin" : "user"),
+        (clerkUser.primaryEmailAddress?.emailAddress?.trim().toLowerCase() === "adminresto@gmail.com" ? "admin" : "user"),
       createdAt: clerkUser.createdAt?.toString() || new Date().toISOString(),
     }
     : null;
 
   const isAdmin = user?.role === "admin";
+
+  if (user) {
+    console.log("[AuthDebug] User:", user.email, "Role:", user.role, "IsAdmin:", isAdmin);
+    console.log("[AuthDebug] Clerk Email:", clerkUser?.primaryEmailAddress?.emailAddress);
+  }
 
   // Compatibility functions
   const login = async () => {

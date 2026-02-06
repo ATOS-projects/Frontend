@@ -74,7 +74,7 @@ export const menuItems: MenuItem[] = [
     description: "Rich and creamy lobster soup with brandy and fresh cream",
     price: 1400,
     category: "Starters",
-    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800&q=80",
     available: true,
     featured: true,
   },
@@ -150,6 +150,16 @@ export const menuItems: MenuItem[] = [
     category: "Beverages",
     image: "https://images.unsplash.com/photo-1560023907-5f339617ea30?w=800&q=80",
     available: true,
+  },
+  {
+    _id: "13",
+    name: "White Sauce Pasta",
+    description: "Creamy white sauce pasta with herbs, garlic, and parmesan cheese",
+    price: 1500,
+    category: "Mains",
+    image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=800&q=80",
+    available: true,
+    featured: true,
   },
 ];
 

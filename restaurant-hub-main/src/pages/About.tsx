@@ -113,21 +113,39 @@ const About = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="w-32 h-32 rounded-full bg-muted mx-auto mb-4" />
+              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 border-2 border-primary/20">
+                <img
+                  src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80"
+                  alt="Chef Marcus Laurent"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <h3 className="font-display text-lg font-medium">
                 Chef Marcus Laurent
               </h3>
               <p className="text-muted-foreground text-sm">Executive Chef</p>
             </div>
             <div className="text-center">
-              <div className="w-32 h-32 rounded-full bg-muted mx-auto mb-4" />
+              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 border-2 border-primary/20">
+                <img
+                  src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=400&q=80"
+                  alt="Sofia Montague"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <h3 className="font-display text-lg font-medium">
                 Sofia Montague
               </h3>
               <p className="text-muted-foreground text-sm">Sous Chef</p>
             </div>
             <div className="text-center">
-              <div className="w-32 h-32 rounded-full bg-muted mx-auto mb-4" />
+              <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 border-2 border-primary/20">
+                <img
+                  src="https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?w=400&q=80"
+                  alt="Antoine Beaumont"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <h3 className="font-display text-lg font-medium">
                 Antoine Beaumont
               </h3>

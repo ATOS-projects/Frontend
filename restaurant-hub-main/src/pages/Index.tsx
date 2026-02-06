@@ -11,10 +11,8 @@ import dishFondant from "@/assets/dish-fondant.jpg";
 const featuredDishes = menuItems
   .filter((item) => item.featured)
   .slice(0, 4)
-  .map((item, index) => ({
-    ...item,
-    image: [dishRisotto, dishScallops, dishFondant, dishFondant][index] || item.image,
-  }));
+  .filter((item) => item.featured)
+  .slice(0, 4);
 
 const testimonials = [
   {

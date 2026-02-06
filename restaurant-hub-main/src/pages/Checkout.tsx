@@ -21,6 +21,31 @@ const Checkout = () => {
     zip: "",
   });
 
+  if (!isAuthenticated) {
+    return (
+      <div className="section-padding">
+        <div className="container-custom">
+          <div className="max-w-md mx-auto text-center">
+            <h1 className="font-display text-3xl font-medium mb-4">
+              Login Required
+            </h1>
+            <p className="text-muted-foreground mb-8">
+              Please log in to place an order.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Link to="/login">
+                <Button size="lg">Log In</Button>
+              </Link>
+              <Link to="/register">
+                <Button size="lg" variant="outline">Sign Up</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (items.length === 0) {
     return (
       <div className="section-padding">
