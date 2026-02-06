@@ -42,31 +42,38 @@ npm install
 npm run dev
 ```
 
-The application will be available at `http://localhost:8080` (or the port shown in your terminal).
+**Edit a file directly in GitHub**
 
-## Available Scripts
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-- `npm run dev`: Starts the development server.
-- `npm run build`: Builds the app for production.
-- `npm run lint`: Runs ESLint to check for code quality issues.
-- `npm run preview`: Locally preview the production build.
-- `npm test`: Runs tests using Vitest.
+**Use GitHub Codespaces**
 
-## Environment Variables
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-To run this project, you will need to add the following environment variables to your .env file:
+## What technologies are used for this project?
 
-`VITE_CLERK_PUBLISHABLE_KEY`
+This project is built with:
 
-1. Create a file named `.env` in the root directory.
-2. Add your Clerk Publishable Key:
-   ```
-   VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
-   ```
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
-## Project Structure
+## How can I deploy this project?
 
-- `src/`: Source code including components, pages, and styles.
-- `public/`: Static assets.
-- `vite.config.ts`: Vite configuration.
-- `tailwind.config.ts`: Tailwind CSS configuration.
+Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
