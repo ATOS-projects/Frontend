@@ -1,28 +1,24 @@
-import { DollarSign, ShoppingCart, Users, UtensilsCrossed, TrendingUp } from "lucide-react";
-import { orders, menuItems, users } from "@/data/mockData";
+import { IndianRupee, ShoppingCart, Users, UtensilsCrossed, TrendingUp } from "lucide-react";
+import { users } from "@/data/mockData";
+import { useMenu } from "@/context/MenuContext";
+import { useOrders } from "@/context/OrderContext";
 
-const stats = [
+const statsBase = [
   {
     label: "Total Revenue",
-    value: "$12,450",
+    value: "₹12,450",
     change: "+12.5%",
-    icon: DollarSign,
+    icon: IndianRupee,
     color: "text-success",
   },
   {
     label: "Orders Today",
-    value: orders.length.toString(),
+    // Value will be dynamic
     change: "+3.2%",
     icon: ShoppingCart,
     color: "text-primary",
   },
-  {
-    label: "Menu Items",
-    value: menuItems.length.toString(),
-    change: "Active",
-    icon: UtensilsCrossed,
-    color: "text-accent",
-  },
+  // Menu Items stat will be dynamic
   {
     label: "Customers",
     value: users.filter((u) => u.role === "user").length.toString(),
@@ -31,8 +27,6 @@ const stats = [
     color: "text-primary",
   },
 ];
-
-const recentOrders = orders.slice(0, 5);
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -44,9 +38,31 @@ const revenueData = [
   { name: 'Fri', revenue: 1890 },
   { name: 'Sat', revenue: 2390 },
   { name: 'Sun', revenue: 3490 },
+  { name: 'Mon', revenue: 4000 },
 ];
 
 const Dashboard = () => {
+  const { items } = useMenu();
+  const { orders } = useOrders();
+
+  const recentOrders = orders.slice(0, 5);
+
+  const stats = [
+    statsBase[0],
+    {
+      ...statsBase[1],
+      value: orders.length.toString(),
+    },
+    {
+      label: "Menu Items",
+      value: items.length.toString(),
+      change: "Active",
+      icon: UtensilsCrossed,
+      color: "text-accent",
+    },
+    statsBase[2],
+  ];
+
   return (
     <div className="space-y-6">
       <div>
@@ -113,7 +129,7 @@ const Dashboard = () => {
                     {order.items.length} items
                   </td>
                   <td className="px-5 py-4 text-sm font-medium">
-                    ${order.totalAmount}
+                    ₹{order.totalAmount}
                   </td>
                   <td className="px-5 py-4">
                     <StatusBadge status={order.status} />
@@ -150,7 +166,7 @@ const Dashboard = () => {
         <div className="bg-card rounded-xl border border-border p-5">
           <h3 className="font-display text-lg font-medium mb-4">Popular Items</h3>
           <div className="space-y-3">
-            {menuItems
+            {items
               .filter((item) => item.featured)
               .slice(0, 4)
               .map((item, index) => (
@@ -165,7 +181,7 @@ const Dashboard = () => {
                     <span className="text-sm font-medium">{item.name}</span>
                   </div>
                   <span className="text-sm text-primary font-medium">
-                    ${item.price}
+                    ₹{item.price}
                   </span>
                 </div>
               ))}

@@ -2,37 +2,38 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Star, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MenuCard } from "@/components/MenuCard";
-import { menuItems } from "@/data/mockData";
 import heroImage from "@/assets/hero-restaurant.jpg";
 import dishScallops from "@/assets/dish-scallops.jpg";
 import dishRisotto from "@/assets/dish-risotto.jpg";
 import dishFondant from "@/assets/dish-fondant.jpg";
 
-const featuredDishes = menuItems
-  .filter((item) => item.featured)
-  .slice(0, 4)
-  .filter((item) => item.featured)
-  .slice(0, 4);
-
-const testimonials = [
-  {
-    name: "Sarah M.",
-    text: "An absolutely magical dining experience. The truffle risotto was divine.",
-    rating: 5,
-  },
-  {
-    name: "James L.",
-    text: "Impeccable service and the freshest ingredients. A true gem in the city.",
-    rating: 5,
-  },
-  {
-    name: "Emily R.",
-    text: "The perfect spot for a special occasion. We'll definitely be back!",
-    rating: 5,
-  },
-];
+import { useMenu } from "@/context/MenuContext";
 
 const Index = () => {
+  const { items } = useMenu();
+
+  const featuredDishes = items
+    .filter((item) => item.featured)
+    .slice(0, 4);
+
+  const testimonials = [
+    {
+      name: "Sarah M.",
+      text: "An absolutely magical dining experience. The truffle risotto was divine.",
+      rating: 5,
+    },
+    {
+      name: "James L.",
+      text: "Impeccable service and the freshest ingredients. A true gem in the city.",
+      rating: 5,
+    },
+    {
+      name: "Emily R.",
+      text: "The perfect spot for a special occasion. We'll definitely be back!",
+      rating: 5,
+    },
+  ];
+
   return (
     <div>
       {/* Hero Section */}

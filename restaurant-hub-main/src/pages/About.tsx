@@ -134,7 +134,7 @@ const About = () => {
                 />
               </div>
               <h3 className="font-display text-lg font-medium">
-                Sofia Montague
+                Vikram Das
               </h3>
               <p className="text-muted-foreground text-sm">Sous Chef</p>
             </div>

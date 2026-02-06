@@ -17,11 +17,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { menuItems, categories, MenuItem } from "@/data/mockData";
+import { categories, MenuItem } from "@/data/mockData";
 import { toast } from "@/hooks/use-toast";
+import { useMenu } from "@/context/MenuContext";
 
 const MenuManagement = () => {
-  const [items, setItems] = useState<MenuItem[]>(menuItems);
+  const { items, addMenuItem, updateMenuItem, deleteMenuItem, toggleAvailability } = useMenu();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<MenuItem | null>(null);
   const [formData, setFormData] = useState({
@@ -79,21 +80,15 @@ const MenuManagement = () => {
     e.preventDefault();
 
     if (editingItem) {
-      setItems((prev) =>
-        prev.map((item) =>
-          item._id === editingItem._id
-            ? {
-              ...item,
-              name: formData.name,
-              description: formData.description,
-              price: parseFloat(formData.price),
-              category: formData.category,
-              image: formData.image,
-              available: formData.available,
-            }
-            : item
-        )
-      );
+      updateMenuItem({
+        ...editingItem,
+        name: formData.name,
+        description: formData.description,
+        price: parseFloat(formData.price),
+        category: formData.category,
+        image: formData.image,
+        available: formData.available,
+      });
       toast({ title: "Menu item updated" });
     } else {
       const newItem: MenuItem = {
@@ -105,7 +100,7 @@ const MenuManagement = () => {
         image: formData.image || "/placeholder.svg",
         available: formData.available,
       };
-      setItems((prev) => [...prev, newItem]);
+      addMenuItem(newItem);
       toast({ title: "Menu item added" });
     }
 
@@ -113,17 +108,10 @@ const MenuManagement = () => {
   };
 
   const deleteItem = (id: string) => {
-    setItems((prev) => prev.filter((item) => item._id !== id));
+    deleteMenuItem(id);
     toast({ title: "Menu item deleted" });
   };
 
-  const toggleAvailability = (id: string) => {
-    setItems((prev) =>
-      prev.map((item) =>
-        item._id === id ? { ...item, available: !item.available } : item
-      )
-    );
-  };
 
   return (
     <div className="space-y-6">
@@ -155,7 +143,7 @@ const MenuManagement = () => {
             <div className="space-y-2">
               <div className="flex items-start justify-between">
                 <h3 className="font-medium">{item.name}</h3>
-                <span className="text-primary font-semibold">${item.price}</span>
+                <span className="text-primary font-semibold">₹{item.price}</span>
               </div>
               <p className="text-sm text-muted-foreground line-clamp-2">
                 {item.description}
